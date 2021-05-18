@@ -1,0 +1,22 @@
+{
+  "authors": [
+    {
+      "name": "Alex Pereverzev",
+      "email": "leit040@gmail.com",
+      "homepage": "https://www.linkedin.com/in/oleksandr-pereverzev-07b234210/",
+      "role": "Developer"
+    }
+  ],
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  },
+  "name": "leit040/dataset",
+  "description": "Test task dataset service",
+  "type": "project",
+  "require": {
+    "php": "^7.4|^8.0",
+    "vlucas/phpdotenv": "^5.3"
+  }
+}
