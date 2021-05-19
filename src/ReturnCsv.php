@@ -10,5 +10,5 @@ class ReturnCsv implements ReturnInterface
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             fputcsv($file, $row);
     }
-    }
+        }
 }

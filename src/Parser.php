@@ -15,7 +15,7 @@ class Parser
         while ($dataset = fgetcsv($handle, 0, ",")) {
             $this->save(array_combine($this->key_array, $dataset));
         }
-
+        fclose($handle);
 
     }
 
