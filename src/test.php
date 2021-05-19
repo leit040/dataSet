@@ -1,13 +1,15 @@
 <?php
+require_once '../vendor/autoload.php';
+require_once '../config/dotenv.php';
 //Please add your Db configuration to .env file (.env_example )
 
 
-//Create DB table;
+/*//Create DB table;
 $dd = new Db();
 $dd->createTable();
 
 //Parsing dataset.txt
-$parcer = new Parser();
+$parcer = new Parser();*/
 
 //You need call index method from DataController.php with 2 parameters : array $filter, like as
 // this example: $filter = ['category' => 'handmade', 'gender' => 'male', 'age' => 25, 'age_end' => 26]
@@ -16,6 +18,6 @@ $parcer = new Parser();
 
 
 $filter = ['category' => 'handmade', 'gender' => 'male', 'age' => 25, 'age_end' => 26];
-$test = new DataController();
-var_dump($test->index($filter, 'json'));
-$test->index($filter, 'csv');
+$test = new DataController('csv');
+var_dump($test->index($filter));
+//$test->index($filter);

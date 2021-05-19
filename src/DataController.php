@@ -5,7 +5,23 @@ require_once '../config/dotenv.php';
 class DataController
 
 {
-    public function index($filter = null, $format = 'json')
+public ReturnInterface $returnMethod;
+
+    public function __construct($format)
+    {
+        if($format==="json"){
+            $this->returnMethod= new ReturnJson();
+        }
+        if($format==="csv"){
+            $this->returnMethod = new ReturnCsv();
+        }
+
+
+    }
+
+
+
+    public function index($filter = null)
     {
 
         $db = new Db();
@@ -42,20 +58,12 @@ class DataController
         }
         $stmt = $db->dbh->prepare($sql);
         $stmt->execute();
-        if ($format == "json") {
-            $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            return json_encode($data);
-        }
-        if ($format == "csv") {
-            $file = fopen('../output/' . time() . 'csv', 'w');
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                fputcsv($file, $row);
-            }
 
-        }
+        return $this->returnMethod->return($stmt);
 
 
     }
+
 
 
 }
